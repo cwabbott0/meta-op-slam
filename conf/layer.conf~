@@ -1,0 +1,10 @@
+ # We have a conf and classes directory, add to BBPATH
+BBPATH := "${BBPATH}:${LAYERDIR}"
+
+# We have a recipes directory containing both .bb and .bbappend files, add to BBFILES
+BBFILES := "${BBFILES} ${LAYERDIR}/recipes/*/*.bb \
+             ${LAYERDIR}/recipes/*/*.bbappend"
+
+BBFILE_COLLECTIONS += "angstrom-layer"
+BBFILE_PATTERN_angstrom-layer := "^${LAYERDIR}/"
+BBFILE_PRIORITY_angstrom-layer = "10"

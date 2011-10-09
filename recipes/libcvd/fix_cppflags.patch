@@ -1,0 +1,15 @@
+diff -c 'a/configure.in' 'b/configure.in'
+Index: ./configure.in
+*** ./configure.in	Tue Apr 19 09:37:11 2011
+--- ./configure.in	Sun Apr 24 20:46:46 2011
+***************
+*** 163,170 ****
+  TEST_AND_SET_CXXFLAG(-Wextra)
+  TEST_AND_SET_CXXFLAG(-pipe)
+  
+- APPEND(CPPFLAGS, [-I"$(eval echo $includedir)"])
+- 
+  ########################################
+  #
+  # Remove -O2 from CXXFLAGS
+--- 163,168 ----

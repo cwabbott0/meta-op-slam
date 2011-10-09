@@ -1,0 +1,18 @@
+diff -c 'a/configure.ac' 'b/configure.ac'
+Index: ./configure.ac
+*** ./configure.ac	Tue Oct  6 08:52:02 2009
+--- ./configure.ac	Mon Apr 25 21:03:19 2011
+***************
+*** 70,80 ****
+  TEST_AND_SET_CXXFLAG(-Wall)
+  TEST_AND_SET_CXXFLAG(-Wextra)
+  
+- # add prefix include path
+- APPEND(CPPFLAGS, [-I"$(eval echo $includedir)"])
+- 
+- 
+- 
+  
+  echo
+  echo --------------------------
+--- 70,75 ----

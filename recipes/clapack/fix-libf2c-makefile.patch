@@ -1,0 +1,33 @@
+Fix some cross-compilation stuff
+
+diff -c 'CLAPACK-3.1.1.1/F2CLIBS/libf2c/Makefile' 'CLAPACK-3.1.1.1/F2CLIBS/libf2c/Makefile'
+Index: ./CLAPACK-3.1.1.1/F2CLIBS/libf2c/Makefile
+*** ./CLAPACK-3.1.1.1/F2CLIBS/libf2c/Makefile	Wed Sep  3 15:29:25 2008
+--- ./CLAPACK-3.1.1.1/F2CLIBS/libf2c/Makefile	Sat May  7 19:59:29 2011
+***************
+*** 19,26 ****
+  # compile, then strip unnecessary symbols
+  .c.o:
+  	$(CC) -c -DSkip_f2c_Undefs $(CFLAGS) $*.c
+- 	ld -r -x -o $*.xxx $*.o
+- 	mv $*.xxx $*.o
+  ## Under Solaris (and other systems that do not understand ld -x),
+  ## omit -x in the ld line above.
+  ## If your system does not have the ld command, comment out
+--- 19,24 ----
+***************
+*** 180,191 ****
+  xwsne.o:	lio.h
+  xwsne.o:	fmt.h
+  
+- arith.h: arithchk.c
+- 	$(CC) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
+- 	 $(CC) -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c -lm
+- 	./a.out >arith.h
+- 	rm -f a.out arithchk.o
+- 
+  check:
+  	xsum Notice README abort_.c arithchk.c backspac.c c_abs.c c_cos.c \
+  	c_div.c c_exp.c c_log.c c_sin.c c_sqrt.c cabs.c close.c comptry.bat \
+--- 178,183 ----
+
