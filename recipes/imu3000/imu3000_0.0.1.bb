@@ -3,10 +3,13 @@ PRIORITY = "optional"
 SECTION = "base"
 LICENSE = "GPL"
 
-SRC_URI = "file://* \
-"
+SRCREV = "64a492eaccdf58bb0441325ae734c4352d667380"
 
-S = "${WORKDIR}/imu3000"
+SRC_URI = "git://github.com/cwabbott0/imu3000.git \
+"
+LIC_FILES_CHKSUM = "file://COPYING;md5=8299a99afc88161a11a5cee8a54e2f41"
+
+S = "${WORKDIR}/git"
 
 inherit module
 
