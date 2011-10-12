@@ -1,7 +1,8 @@
 DESCRIPTION = "simple driver for the imu-3000"
 PRIORITY = "optional"
 SECTION = "base"
-LICENSE = "GPL"
+LICENSE = "GPLv2"
+PR = "r1"
 
 SRCREV = "64a492eaccdf58bb0441325ae734c4352d667380"
 
