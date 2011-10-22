@@ -6,6 +6,8 @@ LICENSE = "LGPLv2"
 
 PR = "r8"
 
+LIC_FILES_CHKSUM = "file://LICENSE;md5=a6f89e2100d9b6cdffcea4f398e37343"
+
 SRC_URI = "cvs://anoncvs@cvs.savannah.nongnu.org/cvsroot/libcvd;module=libcvd \
 file://fix_cppflags.patch \
 "
