@@ -6,9 +6,7 @@ LICENSE = "see http://www.robots.ox.ac.uk/~gk/PTAM/download.html"
 
 PR = "r14"
 
-DEPENDS = "opencv libcvd libgvars3 mesa readline"
-
-RDEPENDS = "opencv libcvd libgvars3 mesa"
+DEPENDS = "opencv libcvd libgvars3 virtual/libgl readline"
 
 SRC_URI = "file://PTAM_1.0-r114/*.cc \
 file://PTAM_1.0-r114/*.h \
