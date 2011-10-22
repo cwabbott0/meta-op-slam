@@ -1,0 +1,2 @@
+#define TOON_TYPEOF_TYPEOF
+#define TOON_USE_LAPACK
