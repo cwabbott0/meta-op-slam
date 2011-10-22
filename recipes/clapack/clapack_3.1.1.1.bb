@@ -4,24 +4,25 @@ SECTION = "console/scientific"
 PRIORITY = "optional"
 LICENSE = "modified BSD"
 
-PR = "r7"
+PR = "r9"
 
-S = "${WORKDIR}"
+LIC_FILES_CHKSUM = "file://COPYING;md5=50a26e7a8b67816e681718673ec547a7"
+
+S = "${WORKDIR}/CLAPACK-${PV}"
 
 SRC_URI = "http://www.netlib.org/clapack/clapack-${PV}.tgz \
 file://make.inc \
 file://arith.h \
-file://fix-libf2c-makefile.patch;striplevel=0 \
+file://fix-libf2c-makefile.patch \
 "
 
 do_configure() {
-	rm -f ${WORKDIR}/CLAPACK-${PV}/make.inc
-	cp ${WORKDIR}/make.inc ${WORKDIR}/CLAPACK-${PV}
-	cp ${WORKDIR}/arith.h ${WORKDIR}/CLAPACK-${PV}/F2CLIBS/libf2c
+	rm -f ${S}/make.inc
+	cp ${WORKDIR}/make.inc ${S}
+	cp ${WORKDIR}/arith.h ${S}/F2CLIBS/libf2c
 }
 
 do_compile() {
-	cd ${WORKDIR}/CLAPACK-${PV}
 	oe_runmake f2clib
 	oe_runmake blaslib
 	cd SRC
@@ -29,12 +30,12 @@ do_compile() {
 }
 
 do_install() {
-	install -m 0755 -d ${D}${docdir}/clapack ${D}${incdir} ${D}${libdir}
-	install -m 0644 ${WORKDIR}/CLAPACK-${PV}/INCLUDE/blaswrap.h ${WORKDIR}/CLAPACK-${PV}/INCLUDE/clapack.h ${WORKDIR}/CLAPACK-${PV}/INCLUDE/f2c.h ${D}${incdir}/
-	install -m 0644 ${WORKDIR}/CLAPACK-${PV}/COPYING ${D}${docdir}/clapack
-	oe_libinstall -C ${WORKDIR}/CLAPACK-${PV}/ -a liblapack ${D}${libdir}
-	oe_libinstall -C ${WORKDIR}/CLAPACK-${PV}/ -a libblas ${D}${libdir}
-	oe_libinstall -C ${WORKDIR}/CLAPACK-${PV}/F2CLIBS -a libf2c ${libdir}
+	install -m 0755 -d ${D}${docdir}/clapack ${D}${includedir} ${D}${libdir}
+	install -m 0644 ${S}/INCLUDE/blaswrap.h ${S}/INCLUDE/clapack.h ${S}/INCLUDE/f2c.h ${D}${includedir}
+	install -m 0644 ${S}/COPYING ${D}${docdir}/clapack
+	oe_libinstall -C ${S} -a liblapack ${D}${libdir}
+	oe_libinstall -C ${S} -a libblas ${D}${libdir}
+	oe_libinstall -C ${S}/F2CLIBS -a libf2c ${D}${libdir}
 }
 
 SRC_URI[md5sum] = "a94e28a0ab6f0454951e7ef9c89b3a38"
