@@ -1,6 +1,6 @@
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 
-LINKFLAGS = -llapack -lblas -lf2c -lGL -lGLU -lreadline -lcurses -lGVars3 -lcvd -lopencv_core -lopencv_imgproc -lopencv_highgui
+LINKFLAGS = -llapack -lblas -lf2c -lGL -lGLU -lreadline -lcurses -lGVars3 -lcvd -lopencv_core -lopencv_imgproc -lopencv_highgui -lX11 -lpthread -lstdc++ -lm -lrt
 COMPILEFLAGS = -D_LINUX -D_REENTRANT -Wall
 
 # Edit this line to change video source

@@ -4,7 +4,9 @@ SECTION = "console/scientific"
 PRIORITY = "optional"
 LICENSE = "see http://www.robots.ox.ac.uk/~gk/PTAM/download.html"
 
-PR = "r14"
+PR = "r0"
+
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=eb23bcd19c4214e95d4363756df2e544"
 
 DEPENDS = "opencv libcvd libgvars3 virtual/libgl readline"
 
@@ -19,19 +21,19 @@ file://PTAM_1.0-r114/LICENSE.txt \
 file://VideoSource_Linux_OpenCV.cc \
 "
 
+S = "${WORKDIR}/PTAM_1.0-r114"
+
 do_configure() {
-	cp ${WORKDIR}/PTAM_1.0-r114/* ${WORKDIR}
-	rm -rf ${WORKDIR}/PTAM_1.0-r114
+	cp ${WORKDIR}/VideoSource_Linux_OpenCV.cc ${S}
 }
 
 do_compile() {
-	cd ${WORKDIR}
 	oe_runmake All
 }
 
 do_install() {
-	install -m 0755 -d ${D}${bindir} ${D}${docdir}/ptam
-	install -m 0755 ${WORKDIR}/PTAM ${WORKDIR}/CameraCalibrator ${D}${bindir}
-	install -m 0755 ${WORKDIR}/settings.cfg ${WORKDIR}/calibrator_settings.cfg ${WORKDIR}/video_source_settings.cfg ${D}${bindir}
-	install -m 0644 ${WORKDIR}/README.txt ${WORKDIR}/LICENSE.txt ${D}${docdir}/ptam
+	install -m 0755 -d ${D}${bindir} ${D}${docdir}/ptam ${D}${sysconfdir}/PTAM
+	install -m 0755 ${S}/PTAM ${S}/CameraCalibrator ${D}${bindir}
+	install -m 0755 ${S}/settings.cfg ${S}/calibrator_settings.cfg ${S}/video_source_settings.cfg ${D}${sysconfdir}/PTAM
+	install -m 0644 ${S}/README.txt ${S}/LICENSE.txt ${D}${docdir}/ptam
 }
